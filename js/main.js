@@ -1,4 +1,5 @@
-const shoppingList = [
+let even=true; 
+let shoppingList = [
     'banane',
     'lamponi',
     'carote',
@@ -29,7 +30,36 @@ while (i < shoppingList.length){
     const shoppingItem = document.createElement('li');
     shoppingItem.innerHTML = shoppingList[i];  
     cartElement.append(shoppingItem); 
-    i++;
-    
+
+    if(i % 2 == 0){
+        shoppingItem.classList.add('active');
+        even=true;
+
+    } 
+
+    i++;   
 }
 
+const listItems = document.querySelectorAll('li')
+
+const button = document.querySelector('#button')
+button.addEventListener('click', function(){
+    if (even === true) { 
+        for (let i = 0; i < listItems.length; i++) {
+            if (i % 2 === 0) {
+                listItems[i].classList.remove('active')
+            } else {
+                listItems[i].classList.add('active')
+            }
+        }
+    } else { 
+        for (let i = 0; i < listItems.length; i++) {
+            if (i % 2 === 0) {
+                listItems[i].classList.add('active')
+            } else {
+                listItems[i].classList.remove('active')
+            }
+        }
+    }
+    even = !even
+})
